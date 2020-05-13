@@ -1,36 +1,31 @@
 #!/usr/bin/python3
 import random
 
-ileliczb = int(input("Podaj ilość typowanych liczb: "))
-maksliczba = int(input("Podaj maksymalną losowaną liczbę: "))
-# print("Wytypuj %s z %s liczb: " % (ileliczb, maksliczba))
 
-liczby = []
-# for i in range(ileliczb):
-i = 0
-while i < ileliczb:
-    liczba = random.randint(1, maksliczba)
-    if liczby.count(liczba) == 0:
-        liczby.append(liczba)
-        i = i + 1
-print("Wytypuj %s z %s liczb: " % (ileliczb, maksliczba))
-typy = set()
-wylosowane = set()
-i = 0
-while i < ileliczb:
-    typ = int(input("Podaj liczbę %s: " % (i + 1)))
-    if typ not in typy:
-        typy.add(typ)
-        i = i + 1
-        if typ in liczby:
-            wylosowane.add(typ)
+print("Zaczynam losowanie")
+
+min=1
+max=49
+ileliczb=6;
+
+def losuj(min, max):
+    liczby = []
+    i = 0
+    while i < ileliczb:
+        liczba = random.randint(min, max)
+        if liczby.count(liczba) == 0:
+            liczby.append(liczba)
+            i = i + 1
+    return liczby;
 
 
-
-print("Wylosowane liczby:", liczby)
-
-if wylosowane:
-    print("\nIlość trafień: %s" % len(wylosowane))
-    print("Trafione liczby: ", wylosowane)
-else:
-    print("Brak trafień. Spróbuj jeszcze raz!")
+wspolny=set();
+i=0
+while len(wspolny)!=ileliczb:
+    zbior1=losuj(min, max)
+    zbior2=losuj(min, max)
+    wspolny=set(zbior1)&set(zbior2)
+    i=i+1;
+    if(len(wspolny)==ileliczb):
+        print(i)
+        print("Trafione"+str(wspolny))
