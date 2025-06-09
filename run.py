@@ -8,7 +8,7 @@ min=1
 max=49
 ileliczb=2;
 maxLiczb=6;
-ileLosowan=4;
+ileLosowan=5;
 c=0;
 
 def losuj(min, max):
